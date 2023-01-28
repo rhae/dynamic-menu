@@ -1,0 +1,70 @@
+export const sysmenu = {
+    "result": {
+        "code": 0,
+        "text": ""
+    },
+    "menu" : [
+        {
+            "id": "MNU_CTRL",
+            "label": "Controller",
+            "children": [
+                {
+                    "id": "MNU_GENERAL",
+                    "label": "Allgemein",
+                    "dialogs": [
+                        {
+                            "id": "DLG_ABC",
+                            "label": "Information",
+                            "vars": ["VER", "SER"]
+                        },
+                        {
+                            "id": "DLG_DEF",
+                            "label": "Display & Sprache",
+                            "vars": ["NLS", "BRI"]
+                        }
+                    ]
+                },
+                {
+                    "id": "MNU_SETTINGS",
+                    "label": "Einstellungen",
+                    "dialogs": [
+                        {
+                            "id": "DLG_LOG",
+                            "label": "Logbuch",
+                            "vars": ["LOG", "LOG:EXP"]
+                        }
+                    ]
+                },
+            ]
+        },
+        {
+            "id": "MNU_SENSOR",
+            "label": "Sensor",
+            "children": [
+                {
+                    "id": "MNU_GENERAL",
+                    "label": "Allgemein",
+                    "dialogs": [
+                        {
+                            "id": "DLG_ABC",
+                            "label": "Information",
+                            "vars": ["PVR", "PSR"]
+                        }
+                    ]
+                },
+                {
+                    "id": "MNU_ACT_VALUES",
+                    "label": "Istwerte",
+                    "dialogs": [
+                        {
+                            "id": "DLG_TMP",
+                            "label": "Temperatur",
+                            "vars": ["TMP", "TP1", "TP2"]
+                        }
+                    ]
+                },
+            ]
+        }
+    ]
+};
+
