@@ -1,22 +1,25 @@
 import { render } from "solid-js/web";
-import { createSignal, For } from "solid-js";
-import { sysmenu } from "./sysmenu";
+import { createResource, createSignal, For } from "solid-js";
 import { Menu } from "./menu";
+import menustore from "./stores/menustore";
 import "./index.css";
 
 function App() {
-  const [menus, setMenus] = createSignal(sysmenu.menu);
+  const {menus, set} = menustore;  
 
   return (
-    <ul>
-      <For each={menus()}>
-        {(menu, i) => (
-          <li>
-            <Menu {...menu} />
-          </li>
-        )}
-      </For>
-    </ul>
+    <>
+      <header>
+
+      </header>
+      <main>
+        <For each={menus()}>
+          {(menu, i) => (
+              <Menu {...menu} />
+          )}
+        </For>
+      </main>
+    </>
   );
 }
 

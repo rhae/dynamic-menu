@@ -1,4 +1,4 @@
-export const sysmenu = {
+{
     "result": {
         "code": 0,
         "text": ""
@@ -34,7 +34,7 @@ export const sysmenu = {
                             "vars": ["LOG", "LOG:EXP"]
                         }
                     ]
-                },
+                }
             ]
         },
         {
@@ -67,9 +67,9 @@ export const sysmenu = {
                             "vars": ["TP1:W1L", "TP1:W1H"]
                         }
                     ]
-                },
+                }
             ]
         }
     ]
-};
+}
 

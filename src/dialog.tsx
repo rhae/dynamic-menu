@@ -1,8 +1,9 @@
 
-import { createSignal } from "solid-js";
+import { createResource, createSignal } from "solid-js";
 
-import { vars } from "./vars";
-import "./index.css";
+import varstore from "./stores/varstore";
+
+const {vars, set} = varstore;
 
 type VarProps = {
   name: string;
@@ -24,7 +25,8 @@ type EnumProps = VarProps & {
 };
 
 function get_var(varname: string) {
-  const idx = vars.vars.findIndex((xvar) => xvar.name === varname);
+  const xvars = vars()['vars'];
+  const idx = xvars.findIndex((xvar: VarProps) => xvar.name === varname);
   if (idx < 0) {
     console.log("Variable " + varname + " not found.");
     return {
@@ -32,7 +34,7 @@ function get_var(varname: string) {
       type: "STRING",
     };
   }
-  return vars.vars[idx];
+  return xvars[idx];
 }
 
 function StringVar(props: VarProps) {
@@ -51,7 +53,6 @@ function StringVar(props: VarProps) {
   return (
     <div class="var var-string" data-unit={props.unit}>
       <label for={props.name}>{props.label}</label>
-      {/*<div id={props.name} class="var-value">{props.value}</div>*/}
       <input {...options} ></input>
     </div>
   );
@@ -73,7 +74,6 @@ function IntegerVar(props: VarProps) {
   return (
     <div class="var var-integer" data-unit={props.unit}>
       <label for={props.name}>{props.label}</label>
-      {/*<div id={props.name} class="var-value">{props.value}</div>*/}
       <input {...options} ></input>
     </div>
   );
