@@ -54,12 +54,17 @@ export const sysmenu = {
                 },
                 {
                     "id": "MNU_ACT_VALUES",
-                    "label": "Istwerte",
+                    "label": "Temperatur",
                     "dialogs": [
                         {
                             "id": "DLG_TMP",
-                            "label": "Temperatur",
+                            "label": "Istwerte",
                             "vars": ["TMP", "TP1", "TP2"]
+                        },
+                        {
+                            "id": "DLG_TMP_CFG",
+                            "label": "Einstellungen",
+                            "vars": ["TP1:W1L", "TP1:W1H"]
                         }
                     ]
                 },

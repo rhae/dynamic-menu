@@ -1,7 +1,11 @@
+
+import { createSignal } from "solid-js";
+
 import { vars } from "./vars";
 import "./index.css";
 
 type VarProps = {
+  name: string;
   label: boolean;
   value: string;
   unit: string;
@@ -32,37 +36,85 @@ function get_var(varname: string) {
 }
 
 function StringVar(props: VarProps) {
+  const [value, SetValue] = createSignal({value: props.value});
+  function handleInput(ev) {
+    SetValue({value:ev.target.value})
+  }
+  const options = {
+    id: props.name,
+    class: props.editable ? "var-value editable" : props.unit === "" ? "var-value no-unit" : "var-value",
+    onChange: props.editable ? {handleInput} : "",
+    disabled: !!!props.editable,
+    value : props.value
+  }
+
   return (
     <div class="var var-string" data-unit={props.unit}>
-      <div class="var-label">{props.label}</div>
-      <div class="var-value">{props.value}</div>
+      <label for={props.name}>{props.label}</label>
+      {/*<div id={props.name} class="var-value">{props.value}</div>*/}
+      <input {...options} ></input>
     </div>
   );
 }
 
 function IntegerVar(props: VarProps) {
+  const [value, SetValue] = createSignal({value: props.value});
+  function handleInput(ev) {
+    SetValue({value:ev.target.value})
+  }
+  const options = {
+    id: props.name,
+    class: props.editable ? "var-value editable" : props.unit === "" ? "var-value no-unit" : "var-value",
+    onChange: props.editable ? {handleInput} : "",
+    disabled: !!!props.editable,
+    value : props.value
+  }
+
   return (
     <div class="var var-integer" data-unit={props.unit}>
-      <div class="var-label">{props.label}</div>
-      <div class="var-value">{props.value}</div>
+      <label for={props.name}>{props.label}</label>
+      {/*<div id={props.name} class="var-value">{props.value}</div>*/}
+      <input {...options} ></input>
     </div>
   );
 }
 
 function FloatVar(props: FloatProps) {
+  const [value, SetValue] = createSignal({value: props.value});
+  function handleInput(ev) {
+    SetValue({value:ev.target.value})
+  }
+  const options = {
+    id: props.name,
+    class: props.editable ? "var-value editable" : props.unit === "" ? "var-value no-unit" : "var-value",
+    onChange: props.editable ? {handleInput} : "",
+    disabled: !!!props.editable,
+    value : props.value
+  }
+
   return (
     <div class="var var-float" data-unit={props.unit}>
-      <div class="var-label">{props.label}</div>
-      <div class="var-value">{props.value}</div>
+      <label for={props.name}>{props.label}</label>
+      <input {...options} ></input>
     </div>
   );
 }
 
 function EnumVar(props: EnumProps) {
+  const [value, SetValue] = createSignal({value: props.value});
+  function handleInput(ev) {
+    SetValue({value:ev.target.value})
+  }
+  const options = {
+    id: props.name,
+    class: "var-value"
+  }
+  const labelClass = props.editable ? "editable" : "";
+  const val = props.editable ? <input onChange={handleInput} {...options} value={props.value}></input> : <div {...options}>{props.value}</div>;
   return (
     <div class="var var-enum" data-unit={props.unit}>
-      <div class="var-label">{props.label}</div>
-      <div class="var-value">{props.value}</div>
+      <label for={props.name} class={labelClass}>{props.label}</label>
+      {val}
     </div>
   );
 }
@@ -124,7 +176,7 @@ export function Dialog(props: DialogProps) {
   const xvars = get_vars(props.vars);
   return (
     <>
-      <li class="dialog">{props.label}</li>
+      <div class="dlg-h2">{props.label}</div>
       {xvars}
     </>
   );

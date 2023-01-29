@@ -8,14 +8,14 @@ export function Menu(props) {
 
     return (
       <>
-        {/*<li>{item.label}</li> */}
+        {/*<div class="dlg-h1">{item.label}</div>*/}
         {dlgs}
       </>
     );
   });
   return (
     <div class="container">
-      {/*<li>aaa {props.label}</li>*/}
+      {/*<div class="dlg-h1">{props.label}</div>*/}
       {subMenus}
     </div>
   );
