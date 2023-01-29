@@ -19,7 +19,7 @@ type EnumProps = VarProps & {
   displayLabels: Array<string>;
 };
 
-function get_var(varname) {
+function get_var(varname: string) {
   const idx = vars.vars.findIndex((xvar) => xvar.name === varname);
   if (idx < 0) {
     console.log("Variable " + varname + " not found.");
@@ -91,7 +91,7 @@ function ActionVar(props: EnumProps) {
   );
 }
 
-function get_vars(varnames) {
+function get_vars(varnames: Array<string>) {
   const xvars = varnames.map((xvar) => {
     const curvar = get_var(xvar);
 
